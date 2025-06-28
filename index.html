@@ -1,0 +1,118 @@
+<?php
+session_start();
+$message = $_SESSION['message']?? '';
+unset($_SESSION['message']);
+?>
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Connexion utilisateur</title>
+  <style>
+    body { 
+      font-family: sans-serif; 
+      background:rgb(81, 148, 154); 
+      display: flex; 
+      justify-content: center; 
+      align-items: center; 
+      height: 100vh;}
+    form {
+      rgba(255,255,255,0.) 
+      background: white;
+       padding: 30px;
+         box-shadow: 0 0 10px rgba(255,255,255,0.3)  rgba(6, 1, 1, 0.12);
+          width: 300px;}
+    input { width: 100%;
+       margin: 10px 0;
+      border-radius: 10px;
+border:none;
+       padding: 10px;}
+    button { width: 100%; padding:  10px;
+      background: #0984e3;
+       color: white; 
+       border: none;
+      border-radius: 10px;
+
+      }
+.alert {
+   background: #ffe3e3;
+   color: #b00020;
+    padding: 10px;
+     border-radius: 5px; 
+     margin-bottom: 10px;}
+     section{
+      display: flex; 
+      justify-content:space-between; 
+      align-items: center;
+      border-radius: 10px;
+       background:azure;
+rgba(255,255,255,0.3)
+
+     }
+     h1{
+      position: absolute;
+      top: 30%;
+     left: 40%;
+     transform: translate(-50%, 50%);
+     color:whete;
+     text-align: reight;
+     color: blue;
+     }
+    img{
+      width: 309px;
+      height: 332px;
+      border-radius: 10px;
+    }
+     .ct{
+      background-size: 300px;
+       background: #0984e3;
+      width: 300px;
+      height: 332px ;
+     }
+  </style>
+</head>
+<body>
+  <script type="module">
+  // Import the functions you need from the SDKs you need
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/11.9.1/firebase-app.js";
+  import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.9.1/firebase-analytics.js";
+  // TODO: Add SDKs for Firebase products that you want to use
+  // https://firebase.google.com/docs/web/setup#available-libraries
+
+  // Your web app's Firebase configuration
+  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+  const firebaseConfig = {
+    apiKey: "AIzaSyAUB7_za5duORKJ2Tvgvz_HRHXd7TRqKmg",
+    authDomain: "yoha-34830.firebaseapp.com",
+    projectId: "yoha-34830",
+    storageBucket: "yoha-34830.firebasestorage.app",
+    messagingSenderId: "883280635952",
+    appId: "1:883280635952:web:ede322e4c92c8487d325f5",
+    measurementId: "G-JFK2T0Y5EC"
+  };
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  const analytics = getAnalytics(app);
+</script>
+  <section>
+    <div class="ct">
+      <h1>Système de gestion <br>des dossiers <br> médicaux et suivi <br> de traitement<br> des patients</h1>
+    <img src="cs.jpg" alt="" srcset="">
+    </div>
+  <form method="POST" action="connexion.php">
+    <h2>Connexion</h2>
+    <?php if ($message):?>
+      <div class="alert"><?= htmlspecialchars($message)?></div>
+    <?php endif;?>
+    <input type="text" name="identifiant" placeholder="Identifiant" required />
+    <input type="password" name="mot_de_passe" placeholder="Mot de passe" required />
+    <button type="submit">Se connecter</button>
+    <p style="margin-top:20px; font-size:0.9em;">
+Besoin d'aide? <a href="mailto:support@votrehopital.com">Contacter l’administrateur</a>
+</p>
+
+</form>
+  </section>
+</body>
+</html>
